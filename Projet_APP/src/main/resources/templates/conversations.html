@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Conversations</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-6">
+<div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
+    <h1 class="text-2xl font-bold text-center mb-4">Conversations de l'utilisateur</h1>
+    <ul class="space-y-4">
+        <li th:each="conversation : ${conversations}" class="bg-white p-4 rounded-lg shadow-md">
+            <p><strong class="text-gray-800" th:text="${conversation.username}"></strong> : <span class="text-gray-700" th:text="${conversation.message}"></span></p>
+            <p><strong class="text-gray-800">Réponse :</strong> <span class="text-gray-700" th:text="${conversation.response}"></span> (par <span class="text-gray-700" th:text="${conversation.quoteAuthor}"></span>)</p>
+            <p><small class="text-gray-500" th:text="${#temporals.format(conversation.timestamp, 'dd-MM-yyyy HH:mm')}"></small></p>
+        </li>
+    </ul>
+    <a href="/admin" class="block text-center mt-4 text-indigo-600 hover:text-indigo-900">Retour à la liste des utilisateurs</a>
+</div>
+</body>
+</html>
